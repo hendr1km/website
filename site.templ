@@ -1,0 +1,194 @@
+package main
+
+import (
+	"Site/assets/blog"
+	"Site/components"
+)
+
+templ About() {
+	<!DOCTYPE html>
+	<html lang="en">
+		@head()
+		<body class="h-screen bg-black">
+			@page("about") {
+				<h1 class="font-bold text-5xl">
+					Hey, I'm Hendrik 👋
+				</h1>
+				<h1 class="text-1xl mb-10 w-full md:max-w-2xl">Currently in my master’s studies in primary education, I also work as a Research Assistant in Clinical Child and Adolescent Psychology and Psychotherapy at the University of Wuppertal.</h1>
+				<h1 class="font-bold text-3xl pt-10">Projects</h1>
+				@projects()
+				@recentBlog() {
+					@components.BlogCardTemplate(blog.Posts[0])
+				}
+			}
+		</body>
+	</html>
+}
+
+templ Blog() {
+	<!DOCTYPE html>
+	<html lang="en">
+		@head()
+		<body class="h-screen bg-black">
+			@page("blog") {
+				<h1 class="font-bold text-3xl pt-10">Blog</h1>
+				for _, post := range blog.Posts {
+					@components.BlogCardTemplate(post)
+				}
+			}
+		</body>
+	</html>
+}
+
+templ BlogPost(post blog.Post) {
+	<!DOCTYPE html>
+	<html lang="en">
+		@head()
+		<body class="h-screen bg-black">
+			@page(post.Header) {
+				<h1 class="font-bold text-3xl pt-10">{ post.Header }</h1>
+				<p class="text-1xl mb-10 w-full md:max-w-2xl">
+					@templ.Raw(post.Content)
+				</p>
+			}
+		</body>
+	</html>
+}
+
+templ Publications() {
+	<!DOCTYPE html>
+	<html lang="en">
+		@head()
+		<body class="h-screen bg-black">
+			@page("publications") {
+				<h1 class="font-bold text-3xl pt-10">Publications</h1>
+				<p class="text-1xl mb-10 w-full md:max-w-2xl">
+					Mann, H., (2024). dropout: an R Package for Addressing Dropouts, Missing Values, and Sectional Challenges in Survey Data Analysis. Journal of Open Source Software, 9(95), 6181, https://doi.org/10.21105/joss.06181
+				</p>
+				<p class="text-1xl mb-10 w-full md:max-w-2xl">
+					Kaurin, A., Asbrand, J., Mann, H., & Calvano, C. (2024). Clinical psychology, social identities and societal challenges: Implications for diversity‐sensitive practice and training. Journal of Clinical Psychology, 80(11), 2268-2282. 
+				</p>
+			}
+		</body>
+	</html>
+}
+
+templ page(active string) {
+	<div class="flex flex-col space-y-10 pl-10 pr-10 pt-10">
+		@navbar(active)
+		{ children... }
+		@footer()
+	</div>
+}
+
+templ head() {
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Document</title>
+		// tailwind
+		<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+		//htmx
+		<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+		// fonts
+		<link rel="preconnect" href="https://fonts.googleapis.com"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+		<link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet"/>
+		//icons
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+		<style>
+      body {
+        font-family: 'Inclusive Sans', sans-serif;
+        color: white;
+      }
+    </style>
+	</head>
+}
+
+// https://www.aarondunphy.com/
+// kaystocks.com
+templ navbar(active string) {
+	<nav class="flex flex-row items-center p-4">
+		<div class="ml-auto flex flex-row space-x-6 items-center">
+			if active == "about" {
+				<a class="text-sm underline" href="/about/">About</a>
+				<a class="text-sm hover:underline" href="/blog/">Blog</a>
+				<a class="text-sm hover:underline" href="/publications/">Publications</a>
+			}
+			if active == "blog" {
+				<a class="text-sm hover:underline" href="/about/">About</a>
+				<a class="text-sm underline" href="/blog/">Blog</a>
+				<a class="text-sm hover:underline" href="/publications/">Publications</a>
+			}
+			if active == "publications" {
+				<a class="text-sm hover:underline" href="/about/">About</a>
+				<a class="text-sm hover:underline" href="/blog/">Blog</a>
+				<a class="text-sm underline" href="/publications/">Publications</a>
+			}
+		</div>
+	</nav>
+}
+
+templ projects() {
+	<div class="max-w-5xl lg:mx-0 p-2">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-10">
+			@projectCard("FRAMED", "/assets/projects/framed.svg", "The FRAMED project aims to develop and assess a software-independent research data system, using a data warehouse model, for university outpatient clinics focused on child and adolescent psychotherapy.", "https://kiju.uni-wuppertal.de/en/research/projects/framed-project-secure-data-processing-and-flexible-use-of-diagnostic-information-in-research-and-therapy-practice/")
+			@projectCard("dropout", "/assets/projects/dropout.png", "The dropout package offers tools for dropout analysis in survey data. It helps you identify and handle incomplete responses. It is written in R and C and available on CRAN.", "https://joss.theoj.org/papers/10.21105/joss.06181")
+			@projectCard("noteGraph", "", "noteGraph is a simple CLI tool written in Go that renders your Markdown notes into an interactive HTML graph. It visualizes connections via Wikilinks and mirrors the hierarchical directory structure of your notes.", "https://github.com/hendr1km/noteGraph")
+		</div>
+	</div>
+}
+
+templ projectCard(title, imgPath, descr, link string) {
+	<div class="relative flex flex-col bg-white shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] border border-slate-100 rounded-2xl w-full max-w-md p-6 h-[400px]">
+		<div class="flex items-center mb-4">
+			if imgPath != "" {
+				<img
+					src={ imgPath }
+					alt="Project logo"
+					class="w-10 h-10 mr-2"
+				/>
+			}
+			<h5 class="ml-0 text-black text-slate-800 text-xl font-semibold">
+				{ title }
+			</h5>
+		</div>
+		<p class="block text-slate-600 text-black leading-normal font-light mb-4 flex-grow">
+			{ descr }
+		</p>
+		<div class="mt-auto">
+			<a href={ templ.SafeURL(link) } class="text-slate-800 text-black font-semibold text-sm hover:underline flex items-center">
+				Read More
+				<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+				</svg>
+			</a>
+		</div>
+	</div>
+}
+
+templ recentBlog() {
+	<h1 class="font-bold text-3xl pt-10">Latest Blog Post</h1>
+	<div class="max-w-5xl lg:mx-0 p-2">
+		<div class="grid grid-cols-1 px-10">
+			{ children... }
+			<nav class="pt-2">
+				<a class="text-sm hover:underline" href="/blog/">Show all Posts</a>
+			</nav>
+		</div>
+	</div>
+}
+
+templ footer() {
+	<div class="flex flex-col items-center pt-20">
+		<div class="flex flex-row justify-center space-x-6">
+			<a href="https://github.com/hendr1km" target="_blank" rel="noopener noreferrer">
+				<i class="fab fa-github text-white text-3xl hover:text-gray-500 transition-colors duration-300"></i>
+			</a>
+			<a href="https://www.researchgate.net/profile/Hendrik-Mann" target="_blank" rel="noopener noreferrer">
+				<i class="fa fa-pie-chart text-white text-3xl hover:text-gray-500 transition-colors duration-300"></i>
+			</a>
+		</div>
+		<div class="text-sm pt-5">Hendrik Mann 2025 </div>
+	</div>
+}
