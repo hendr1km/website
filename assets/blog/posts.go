@@ -14,7 +14,7 @@ var Posts = []Post{
 	{
 		Date:           "JAN 6 2024",
 		Header:         "test",
-		PreviewImage:   "assets/blog/content/test_post/typewriter.png",
+		PreviewImage:   "/assets/blog/content/test_post/typewriter.png",
 		PreviewContent: "test preview",
 		HTMLContent:    "assets/blog/content/test_post/test.html",
 		Id:             "test-post",

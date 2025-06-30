@@ -16,6 +16,11 @@ func HandlerAbout(w http.ResponseWriter, r *http.Request) {
 	templ.Handler(comp).ServeHTTP(w, r)
 }
 
+func HandlerProjects(w http.ResponseWriter, r *http.Request) {
+	comp := Projects()
+	templ.Handler(comp).ServeHTTP(w, r)
+}
+
 func HandlerIndexRedirect(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/about/", http.StatusFound)
 
@@ -58,6 +63,7 @@ func HandlerPublications(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
@@ -65,6 +71,7 @@ func main() {
 
 	r.Get("/", HandlerIndexRedirect)
 	r.Get("/about/", HandlerAbout)
+	r.Get("/projects/", HandlerProjects)
 	r.Get("/blog/", HandlerBlog)
 	r.Get("/blog/{slug}", HandlerBlogPost)
 	r.Get("/publications/", HandlerPublications)
