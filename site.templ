@@ -46,10 +46,7 @@ templ BlogPost(post blog.Post) {
 		@head()
 		<body class="h-screen bg-black">
 			@page(post.Header) {
-				<h1 class="font-bold text-3xl pt-10">{ post.Header }</h1>
-				<p class="text-1xl mb-10 w-full md:max-w-2xl">
-					@templ.Raw(post.Content)
-				</p>
+				@templ.Raw(post.Content)
 			}
 		</body>
 	</html>
@@ -74,7 +71,7 @@ templ Publications() {
 }
 
 templ page(active string) {
-	<div class="flex flex-col space-y-10 pl-10 pr-10 pt-10">
+	<div class="flex flex-col space-y-10 pl-10 ml-10 pr-10 pt-10">
 		@navbar(active)
 		{ children... }
 		@footer()
@@ -111,28 +108,28 @@ templ navbar(active string) {
 	<nav class="flex flex-row items-center p-4">
 		<div class="ml-auto flex flex-row space-x-6 items-center">
 			if active == "about" {
-				<a class="text-sm underline" href="/about/">About</a>
-				<a class="text-sm hover:underline" href="/projects/">Projects</a>
-				<a class="text-sm hover:underline" href="/blog/">Blog</a>
-				<a class="text-sm hover:underline" href="/publications/">Publications</a>
+				<a class="text-ml underline" href="/about/">About</a>
+				<a class="text-ml hover:underline" href="/projects/">Projects</a>
+				<a class="text-ml hover:underline" href="/blog/">Blog</a>
+				<a class="text-ml hover:underline" href="/publications/">Publications</a>
 			}
 			if active == "projects" {
-				<a class="text-sm hover:underline" href="/about/">About</a>
-				<a class="text-sm underline" href="/projects/">Projects</a>
-				<a class="text-sm hover:underline" href="/blog/">Blog</a>
-				<a class="text-sm hover:underline" href="/publications/">Publications</a>
+				<a class="text-ml hover:underline" href="/about/">About</a>
+				<a class="text-ml underline" href="/projects/">Projects</a>
+				<a class="text-ml hover:underline" href="/blog/">Blog</a>
+				<a class="text-ml hover:underline" href="/publications/">Publications</a>
 			}
 			if active == "blog" {
-				<a class="text-sm hover:underline" href="/about/">About</a>
-				<a class="text-sm hover:underline" href="/projects/">Projects</a>
-				<a class="text-sm underline" href="/blog/">Blog</a>
-				<a class="text-sm hover:underline" href="/publications/">Publications</a>
+				<a class="text-ml hover:underline" href="/about/">About</a>
+				<a class="text-ml hover:underline" href="/projects/">Projects</a>
+				<a class="text-ml underline" href="/blog/">Blog</a>
+				<a class="text-ml hover:underline" href="/publications/">Publications</a>
 			}
 			if active == "publications" {
-				<a class="text-sm hover:underline" href="/about/">About</a>
-				<a class="text-sm hover:underline" href="/projects/">Projects</a>
-				<a class="text-sm hover:underline" href="/blog/">Blog</a>
-				<a class="text-sm underline" href="/publications/">Publications</a>
+				<a class="text-ml hover:underline" href="/about/">About</a>
+				<a class="text-ml hover:underline" href="/projects/">Projects</a>
+				<a class="text-ml hover:underline" href="/blog/">Blog</a>
+				<a class="text-ml underline" href="/publications/">Publications</a>
 			}
 		</div>
 	</nav>

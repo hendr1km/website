@@ -12,12 +12,12 @@ type Post struct {
 
 var Posts = []Post{
 	{
-		Date:           "JAN 6 2024",
-		Header:         "test",
-		PreviewImage:   "/assets/blog/content/test_post/typewriter.png",
-		PreviewContent: "test preview",
-		HTMLContent:    "assets/blog/content/test_post/test.html",
-		Id:             "test-post",
+		Date:           "JUN 12 2024",
+		Header:         "Correlation Networks in R",
+		PreviewImage:   "/assets/blog/networks/thumbnail.png",
+		PreviewContent: "Plotting correlations as networks can give you a good first impression of the interconnectivity of your variables. This is a quick tutorial on how to create correlation networks in R. ",
+		HTMLContent:    "assets/blog/networks/content.html",
+		Id:             "networks",
 	},
 	{
 		Date:           "JAN 6 2024",
