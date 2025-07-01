@@ -84,7 +84,7 @@ templ head() {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>Document</title>
 		// tailwind
-		<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+		<script src="https://cdn.tailwindcss.com"></script>
 		//htmx
 		<script src="https://unpkg.com/htmx.org@1.9.10"></script>
 		// fonts
@@ -167,7 +167,7 @@ templ projects() {
 }
 
 templ projectCard(title, imgPath, descr, link string) {
-	<div class="relative flex flex-col bg-white shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] border border-slate-100 rounded-2xl w-full max-w-md p-6 h-[400px]">
+	<div class="relative flex flex-col bg-neutral-800 shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl w-full max-w-md p-6 h-[350px]">
 		<div class="flex items-center mb-4">
 			if imgPath != "" {
 				<img
@@ -176,15 +176,15 @@ templ projectCard(title, imgPath, descr, link string) {
 					class="w-10 h-10 mr-2"
 				/>
 			}
-			<h5 class="ml-0 text-black text-slate-800 text-xl font-semibold">
+			<h5 class="ml-0 text-white text-slate-800 text-xl font-semibold">
 				{ title }
 			</h5>
 		</div>
-		<p class="block text-slate-600 text-black leading-normal font-light mb-4 flex-grow">
+		<p class="block text-slate-600 text-white leading-normal font-light mb-4 flex-grow">
 			{ descr }
 		</p>
 		<div class="mt-auto">
-			<a href={ templ.SafeURL(link) } class="text-slate-800 text-black font-semibold text-sm hover:underline flex items-center">
+			<a href={ templ.SafeURL(link) } class="text-slate-800 text-white font-semibold text-sm hover:underline flex items-center">
 				Read More
 				<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
