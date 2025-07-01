@@ -4,21 +4,19 @@ $body-color: white;
 $body-bg: #1a1a1a;
 $code-block-bg: #2a2a2a;
 $code-bg: #2a2a2a;
-$code-color: white;
+$code-color: #1a1a1a;
+$font-family-sans-serif: 'Inclusive Sans';
 
 /*-- scss:rules --*/
 
-body {
-  font-family: 'Inclusive Sans', sans-serif;
-  background-color: $body-bg;
-  color: $body-color;
+.cell-output.cell-output-stdout code {
+  color: white;
 }
 
-code {
-  background-color: $code-block-bg;
-  background-color: $code-bg;
-  color: $code-color;
-}
+
+
+
+
 
 
 

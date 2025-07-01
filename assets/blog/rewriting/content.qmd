@@ -1,0 +1,147 @@
+---
+title: 'Rewriting R Functions in C'
+date: '2024-08-26'
+toc: true
+format:
+  html:
+    theme: [default, styles.scss]
+    html-math-method: katex
+    code-tools: true
+    self-contained: true
+execute: 
+  message: false
+  warning: false
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk:
+    dev: png
+    dev.args:
+      bg: transparent
+
+---
+
+C is a language that has aged well and still plays a crucial role in the world of computing. Although most R developers prefer the C++ API, I believe C and particularly the C API are far from being superseded. C’s syntax is easy to read, and its API is probably as stable as base R, making it great for maintainable software. In this post, I will provide an overview of the C API by rewriting functions that operate on vectors. This process is not different from working with data frames (which are essentially lists of vectors), but we will keep it simple for this demonstration.
+
+Consider the following task: we want to detect sequences of 1s in a vector consisting of 0s and 1s and label them based on their appearance. This could be preparation work for checking sequences of missing values or tracking successfully completed tasks in a trial. However, we will leave the context out for now. The data is simulated from a binomial distribution with a 50% success rate.
+
+# R Implementation
+
+In R, a possible function to achieve this might look like this:
+
+```{r}
+
+set.seed(123)
+vec <- rbinom(100, 1, .5)
+
+fun_r <- function(vec) {
+  res <- numeric(length(vec))
+  sequence <- 0
+  in_sequence <- 0
+
+  for (i in 1:length(vec)) {
+    if (in_sequence == 0) {
+      if (vec[i] == 1) {
+        in_sequence <- 1
+        sequence <- sequence + 1
+        res[i] <- sequence
+      }
+    } else if (in_sequence == 1) {
+      if (vec[i] == 0) {
+        in_sequence <- 0
+      } else {
+        res[i] <- sequence
+      }
+    }
+  }
+  return(res)
+}
+
+fun_r(vec)
+
+```
+
+However, functions containing loops might be too slow in R. Let’s rewrite this function in raw C. This function prints out the array of results in the terminal.
+
+```{c}
+#| eval: false
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+  int vec[] = {1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1};
+  int length = sizeof(vec) / sizeof(vec[0]);
+  int res[length];
+
+  memset(res, 0, length * sizeof(int)); 
+
+  int sequence = 0;
+  int in_sequence = 0;
+
+  for (int i = 0; i < length; ++i) {
+    if (in_sequence == 0) {
+      if (vec[i] == 1) {
+        in_sequence = 1;
+        sequence = sequence + 1;
+        res[i] = sequence;
+      }
+    } else if (in_sequence == 1) {
+      if (vec[i] == 0) {
+        in_sequence = 0;
+      } else {
+        res[i] = sequence;
+      }
+    }
+  }
+
+  for (int j = 0; j < length; ++j) {
+    printf("%d\n", res[j]);
+  }
+
+  return 0;
+}
+
+```
+
+stdio.h contains standard input and output functions, while string.h is used here to dynamically resize our result array. This array should have the same length as our input array, which I have statically placed into the script (but it could be read into the program using some input method). As you can see, most of the function looks much like the code in R.
+
+# Integrating C with R
+
+To source a C function in R, we need to make some changes to the file. First, we include the R.h and Rinternals.h files. Our int output is replaced with a native R type. SEXP can be any vector type and has several subtypes. Our function is no longer called main but, in this case, fun, and it receives a vector passed from R. The length of the vector is extracted with the macro Rf_length. We use allocVector to create a vector of type integer. This gets protected from the R garbage collector using PROTECT. Before returning our vector, we need to unprotect it again. The 1 means that the last element that was protected is unprotected—we only protected one element but would otherwise unprotect all of them for good practice. We can perform all of our manipulations with our SEXP integer vector as usual, but we need to convert these to the R type using, for example, the integer macro INTEGER() when pulling or assigning values. You can think of these macros as a way of binding our R and C types together. Whenever you want to return an element to R, it needs to be of some SEXP type.
+
+```{c}
+#| eval: false
+
+#include <R.h>
+#include <Rinternals.h>
+
+SEXP fun(SEXP vec) {
+  int length = Rf_length(vec);
+  SEXP res = PROTECT(allocVector(INTSXP, length));
+  int sequence = 0;
+  int in_sequence = 0;
+
+  for (int i = 0; i < length; ++i) {
+    if (in_sequence == 0) {
+      if (INTEGER(vec)[i] == 1) {
+        in_sequence = 1;
+        sequence = sequence + 1;
+        INTEGER(res)[i] = sequence;
+      }
+    } else if (in_sequence == 1) {
+      if (INTEGER(vec)[i] == 0) {
+        in_sequence = 0;
+      } else {
+        INTEGER(res)[i] = sequence;
+      }
+    }
+  }
+
+  UNPROTECT(1);
+  return res;
+}
+
+```
+
+We save this function in a C file called C_fun.c. By convention, it is saved starting with C_. Use R CMD SHLIB C_fun.c to create the necessary helper files. Afterwards, we can switch to R and source the file with dyn.load(“C_fun.so”) - the ending .so might differ for your operating system. Executing the function saved in the file is done with .Call(“fun”, vec), where vec is our function input, a vector containing 0s and 1s.
