@@ -35,4 +35,12 @@ var Posts = []Post{
 		HTMLContent:    "assets/blog/networks/content.html",
 		Id:             "networks",
 	},
+	{
+		Date:           "JUN 04 2024",
+		Header:         "Exploring frequency weights in logistic regression",
+		PreviewImage:   "/assets/blog/weights/thumbnail.png",
+		PreviewContent: "Frequency weights can be used in logistic regression to address class imbalance caused by sampling bias. In this post, we will use simulations to explore how to effectively choose weights and visually understand the benefits of this approach.",
+		HTMLContent:    "assets/blog/weights/content.html",
+		Id:             "weights",
+	},
 }
