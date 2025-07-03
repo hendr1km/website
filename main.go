@@ -68,7 +68,6 @@ func GenerateStaticWebsite() {
 		Path       string
 		RenderFunc func(io.Writer)
 	}{
-		{"/about/", RenderAbout},
 		{"/", RenderAbout},
 		{"/publications/", RenderPublications},
 		{"/blog/", RenderBlog},

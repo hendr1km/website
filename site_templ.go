@@ -413,7 +413,7 @@ func navbar(active string) templ.Component {
 			}
 		}
 		if active == "blog" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "<a class=\"text-ml hover:underline\" href=\"../\">About</a> <a class=\"text-ml hover:underline\" href=\"../projects/\">Projects</a> <a class=\"text-ml underline\" href=\"blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"..publications/\">Publications</a> ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "<a class=\"text-ml hover:underline\" href=\"../\">About</a> <a class=\"text-ml hover:underline\" href=\"../projects/\">Projects</a> <a class=\"text-ml underline\" href=\"blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"../publications/\">Publications</a> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
