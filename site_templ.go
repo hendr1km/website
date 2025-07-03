@@ -532,7 +532,7 @@ func projects() templ.Component {
 			templ_7745c5c3_Var15 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "<div class=\"max-w-5xl lg:mx-0 p-2\"><div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 px-10\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "<div class=\"max-w-5xl lg:mx-0 p-2\"><div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 px-0 sm:px-10\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
