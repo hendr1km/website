@@ -34,7 +34,7 @@ func BlogCardTemplate(post blog.Post, recent bool) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"max-w-none sm:max-w-5xl lg:mx-0 p-2\"><div class=\"relative flex flex-col sm:flex-row bg-neutral-800 shadow-lm hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl p-4 sm:p-6 lg:p-8\"><!-- Image --><div class=\"w-full sm:w-20 h-32 sm:h-20 overflow-hidden flex items-center justify-center mb-4 sm:mb-0\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"max-w-none sm:max-w-5xl lg:mx-0 p-2\"><div class=\"relative flex flex-col sm:flex-row bg-neutral-800 shadow-lm hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl w-full p-4 sm:p-6 lg:p-8\"><!-- Image --><div class=\"w-full sm:w-20 h-32 sm:h-20 overflow-hidden flex items-center justify-center mb-4 sm:mb-0\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
