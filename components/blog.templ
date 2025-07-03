@@ -5,13 +5,17 @@ import (
 	"fmt"
 )
 
-templ BlogCardTemplate(post blog.Post) {
+templ BlogCardTemplate(post blog.Post, recent bool) {
 	<div class="max-w-5xl lg:mx-0 p-2">
 		<div class="relative flex flex-row bg-neutral-800 shadow-lm hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl p-8 p-6">
 			<!-- Left: Image -->
 			<div class="w-20 h-20 overflow-hidden flex items-center justify-center">
 				<img
-					src={ fmt.Sprintf("../%s", post.PreviewImage) }
+					if recent {
+						src={ post.PreviewImage }
+					} else {
+						src={ fmt.Sprintf("../%s", post.PreviewImage) }
+					}
 					alt="Post logo"
 					class="w-full h-full object-contain"
 				/>
@@ -31,12 +35,21 @@ templ BlogCardTemplate(post blog.Post) {
 						></path>
 					</svg>
 					<span class="text-gray-300">{ post.Date }</span>
-					<a href={ templ.SafeURL(fmt.Sprintf("%s/", post.Id)) } class="text-white font-semibold text-sm hover:underline flex items-center">
-						Read More
-						<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-						</svg>
-					</a>
+					if recent {
+						<a href={ templ.SafeURL(fmt.Sprintf("%s/", post.Id)) } class="text-white font-semibold text-sm hover:underline flex items-center">
+							Read More
+							<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+							</svg>
+						</a>
+					} else {
+						<a href={ templ.SafeURL(fmt.Sprintf("blog/%s/", post.Id)) } class="text-white font-semibold text-sm hover:underline flex items-center">
+							Read More
+							<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+							</svg>
+						</a>
+					}
 				</p>
 			</div>
 		</div>

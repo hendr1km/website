@@ -18,7 +18,7 @@ templ About() {
 				<h1 class="font-bold text-3xl pt-10">Projects</h1>
 				@projects()
 				@recentBlog() {
-					@components.BlogCardTemplate(blog.Posts[0])
+					@components.BlogCardTemplate(blog.Posts[0], true)
 				}
 			}
 		</body>
@@ -33,7 +33,7 @@ templ Blog() {
 			@page("blog") {
 				<h1 class="font-bold text-3xl pt-10">Blog</h1>
 				for _, post := range blog.Posts {
-					@components.BlogCardTemplate(post)
+					@components.BlogCardTemplate(post, false)
 				}
 			}
 		</body>
