@@ -660,7 +660,7 @@ func recentBlog() templ.Component {
 			templ_7745c5c3_Var21 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, "<h1 class=\"font-bold text-3xl pt-10\">Latest Blog Post</h1><div class=\"max-w-5xl lg:mx-0 p-2\"><div class=\"grid grid-cols-1 px-10\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, "<h1 class=\"font-bold text-3xl pt-10\">Latest Blog Post</h1><div class=\"max-w-5xl lg:mx-0 sm:p-2\"><div class=\"grid grid-cols-1 px-10\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
