@@ -107,28 +107,28 @@ templ head() {
 templ navbar(active string) {
 	<nav class="flex flex-row items-center p-4">
 		<div class="ml-auto flex flex-row space-x-6 items-center">
-			if active == "about" {
-				<a class="text-ml underline" href="about/">About</a>
+			if active == "root" {
+				<a class="text-ml underline" href="./">About</a>
 				<a class="text-ml hover:underline" href="projects/">Projects</a>
 				<a class="text-ml hover:underline" href="blog/">Blog</a>
 				<a class="text-ml hover:underline" href="publications/">Publications</a>
 			}
 			if active == "projects" {
-				<a class="text-ml hover:underline" href="about/">About</a>
+				<a class="text-ml hover:underline" href="../about/">About</a>
 				<a class="text-ml underline" href="projects/">Projects</a>
-				<a class="text-ml hover:underline" href="blog/">Blog</a>
-				<a class="text-ml hover:underline" href="publications/">Publications</a>
+				<a class="text-ml hover:underline" href="../blog/">Blog</a>
+				<a class="text-ml hover:underline" href="../publications/">Publications</a>
 			}
 			if active == "blog" {
-				<a class="text-ml hover:underline" href="about/">About</a>
-				<a class="text-ml hover:underline" href="projects/">Projects</a>
+				<a class="text-ml hover:underline" href="../about/">About</a>
+				<a class="text-ml hover:underline" href="../projects/">Projects</a>
 				<a class="text-ml underline" href="blog/">Blog</a>
-				<a class="text-ml hover:underline" href="publications/">Publications</a>
+				<a class="text-ml hover:underline" href="..publications/">Publications</a>
 			}
 			if active == "publications" {
-				<a class="text-ml hover:underline" href="about/">About</a>
-				<a class="text-ml hover:underline" href="projects/">Projects</a>
-				<a class="text-ml hover:underline" href="blog/">Blog</a>
+				<a class="text-ml hover:underline" href="../about/">About</a>
+				<a class="text-ml hover:underline" href="../projects/">Projects</a>
+				<a class="text-ml hover:underline" href="../blog/">Blog</a>
 				<a class="text-ml underline" href="publications/">Publications</a>
 			}
 		</div>

@@ -402,26 +402,26 @@ func navbar(active string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if active == "about" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<a class=\"text-ml underline\" href=\"about/\">About</a> <a class=\"text-ml hover:underline\" href=\"projects/\">Projects</a> <a class=\"text-ml hover:underline\" href=\"blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"publications/\">Publications</a> ")
+		if active == "root" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<a class=\"text-ml underline\" href=\"./\">About</a> <a class=\"text-ml hover:underline\" href=\"projects/\">Projects</a> <a class=\"text-ml hover:underline\" href=\"blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"publications/\">Publications</a> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
 		if active == "projects" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "<a class=\"text-ml hover:underline\" href=\"about/\">About</a> <a class=\"text-ml underline\" href=\"projects/\">Projects</a> <a class=\"text-ml hover:underline\" href=\"blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"publications/\">Publications</a> ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "<a class=\"text-ml hover:underline\" href=\"../about/\">About</a> <a class=\"text-ml underline\" href=\"projects/\">Projects</a> <a class=\"text-ml hover:underline\" href=\"../blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"../publications/\">Publications</a> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
 		if active == "blog" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "<a class=\"text-ml hover:underline\" href=\"about/\">About</a> <a class=\"text-ml hover:underline\" href=\"projects/\">Projects</a> <a class=\"text-ml underline\" href=\"blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"publications/\">Publications</a> ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "<a class=\"text-ml hover:underline\" href=\"../about/\">About</a> <a class=\"text-ml hover:underline\" href=\"../projects/\">Projects</a> <a class=\"text-ml underline\" href=\"blog/\">Blog</a> <a class=\"text-ml hover:underline\" href=\"..publications/\">Publications</a> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
 		if active == "publications" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<a class=\"text-ml hover:underline\" href=\"about/\">About</a> <a class=\"text-ml hover:underline\" href=\"projects/\">Projects</a> <a class=\"text-ml hover:underline\" href=\"blog/\">Blog</a> <a class=\"text-ml underline\" href=\"publications/\">Publications</a>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<a class=\"text-ml hover:underline\" href=\"../about/\">About</a> <a class=\"text-ml hover:underline\" href=\"../projects/\">Projects</a> <a class=\"text-ml hover:underline\" href=\"../blog/\">Blog</a> <a class=\"text-ml underline\" href=\"publications/\">Publications</a>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
