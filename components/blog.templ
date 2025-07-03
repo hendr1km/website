@@ -6,7 +6,7 @@ import (
 )
 
 templ BlogCardTemplate(post blog.Post, recent bool) {
-	<div class="max-w-5xl lg:mx-0 p-2">
+	<div class="max-w-none sm:max-w-5xl lg:mx-0 p-2">
 		<div class="relative flex flex-col sm:flex-row bg-neutral-800 shadow-lm hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl p-4 sm:p-6 lg:p-8">
 			<!-- Image -->
 			<div class="w-full sm:w-20 h-32 sm:h-20 overflow-hidden flex items-center justify-center mb-4 sm:mb-0">
