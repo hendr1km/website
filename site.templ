@@ -165,7 +165,7 @@ templ projects() {
 }
 
 templ projectCard(title, imgPath, descr, link string) {
-	<div class="relative flex flex-col bg-neutral-800 shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl w-full max-w-md sm:max-w-lg p-6 sm:p-8 h-[350px] sm:h-[400px]">
+	<div class="relative flex flex-col bg-neutral-800 shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl w-full max-w-none sm:max-w-md p-6 sm:p-8 h-[350px] sm:h-[400px]">
 		<div class="flex items-center mb-4">
 			if imgPath != "" {
 				<img

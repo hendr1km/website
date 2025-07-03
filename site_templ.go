@@ -573,7 +573,7 @@ func projectCard(title, imgPath, descr, link string) templ.Component {
 			templ_7745c5c3_Var16 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<div class=\"relative flex flex-col bg-neutral-800 shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl w-full max-w-md sm:max-w-lg p-6 sm:p-8 h-[350px] sm:h-[400px]\"><div class=\"flex items-center mb-4\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<div class=\"relative flex flex-col bg-neutral-800 shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02] rounded-2xl w-full max-w-none sm:max-w-md p-6 sm:p-8 h-[350px] sm:h-[400px]\"><div class=\"flex items-center mb-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
