@@ -544,7 +544,7 @@ func projects() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "</div><nav class=\"pt-3 ml-10\"><a class=\"text-sm hover:underline\" href=\"projects/\">Show all Projects</a></nav></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "</div><nav class=\"pt-3 ml-2 sm:ml-9\"><a class=\"text-sm hover:underline\" href=\"projects/\">Show all Projects</a></nav></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
