@@ -396,7 +396,7 @@ func navbar(active string) templ.Component {
 			templ_7745c5c3_Var12 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<nav class=\"flex flex-row items-center p-4\"><div class=\"ml-auto flex flex-row space-x-6 items-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<nav class=\"flex flex-row items-center p-0 sm:p-4\"><div class=\"ml-auto flex flex-row space-x-6 items-center\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -477,7 +477,7 @@ func Projects() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<h1 class=\"font-bold text-3xl pt-10\">Projects</h1><div class=\"max-w-5xl lg:mx-0 p-2\"><div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 px-10\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<h1 class=\"font-bold text-3xl pt-10\">Projects</h1><div class=\"max-w-5xl lg:mx-0 p-2\"><div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 px-0 sm:px-10\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
