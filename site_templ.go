@@ -481,11 +481,11 @@ func Projects() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = projectCard("FRAMED", "assets/projects/framed.svg", "The FRAMED project aims to develop and assess a software-independent research data system, using a data warehouse model, for university outpatient clinics focused on child and adolescent psychotherapy.", "https://kiju.uni-wuppertal.de/en/research/projects/framed-project-secure-data-processing-and-flexible-use-of-diagnostic-information-in-research-and-therapy-practice/").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = projectCard("FRAMED", "../assets/projects/framed.svg", "The FRAMED project aims to develop and assess a software-independent research data system, using a data warehouse model, for university outpatient clinics focused on child and adolescent psychotherapy.", "https://kiju.uni-wuppertal.de/en/research/projects/framed-project-secure-data-processing-and-flexible-use-of-diagnostic-information-in-research-and-therapy-practice/").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = projectCard("dropout", "assets/projects/dropout.png", "The dropout package offers tools for dropout analysis in survey data. It helps you identify and handle incomplete responses. It is written in R and C and available on CRAN.", "https://joss.theoj.org/papers/10.21105/joss.06181").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = projectCard("dropout", "../assets/projects/dropout.png", "The dropout package offers tools for dropout analysis in survey data. It helps you identify and handle incomplete responses. It is written in R and C and available on CRAN.", "https://joss.theoj.org/papers/10.21105/joss.06181").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
