@@ -83,8 +83,6 @@ templ head() {
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>Hendrik's Website</title>
-		// base path
-		<base href="/website/"/>
 		// tailwind
 		<script src="https://cdn.tailwindcss.com"></script>
 		//htmx
@@ -146,8 +144,8 @@ templ Projects() {
 				<h1 class="font-bold text-3xl pt-10">Projects</h1>
 				<div class="max-w-5xl lg:mx-0 p-2">
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-10">
-						@projectCard("FRAMED", "/assets/projects/framed.svg", "The FRAMED project aims to develop and assess a software-independent research data system, using a data warehouse model, for university outpatient clinics focused on child and adolescent psychotherapy.", "https://kiju.uni-wuppertal.de/en/research/projects/framed-project-secure-data-processing-and-flexible-use-of-diagnostic-information-in-research-and-therapy-practice/")
-						@projectCard("dropout", "/assets/projects/dropout.png", "The dropout package offers tools for dropout analysis in survey data. It helps you identify and handle incomplete responses. It is written in R and C and available on CRAN.", "https://joss.theoj.org/papers/10.21105/joss.06181")
+						@projectCard("FRAMED", "assets/projects/framed.svg", "The FRAMED project aims to develop and assess a software-independent research data system, using a data warehouse model, for university outpatient clinics focused on child and adolescent psychotherapy.", "https://kiju.uni-wuppertal.de/en/research/projects/framed-project-secure-data-processing-and-flexible-use-of-diagnostic-information-in-research-and-therapy-practice/")
+						@projectCard("dropout", "assets/projects/dropout.png", "The dropout package offers tools for dropout analysis in survey data. It helps you identify and handle incomplete responses. It is written in R and C and available on CRAN.", "https://joss.theoj.org/papers/10.21105/joss.06181")
 						@projectCard("noteGraph", "", "noteGraph is a simple CLI tool written in Go that renders your Markdown notes into an interactive HTML graph. It visualizes connections via Wikilinks and mirrors the hierarchical directory structure of your notes.", "https://github.com/hendr1km/noteGraph")
 					</div>
 				</div>
@@ -159,8 +157,8 @@ templ Projects() {
 templ projects() {
 	<div class="max-w-5xl lg:mx-0 p-2">
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-10">
-			@projectCard("FRAMED", "/assets/projects/framed.svg", "The FRAMED project aims to develop and assess a software-independent research data system, using a data warehouse model, for university outpatient clinics focused on child and adolescent psychotherapy.", "https://kiju.uni-wuppertal.de/en/research/projects/framed-project-secure-data-processing-and-flexible-use-of-diagnostic-information-in-research-and-therapy-practice/")
-			@projectCard("dropout", "/assets/projects/dropout.png", "The dropout package offers tools for dropout analysis in survey data. It helps you identify and handle incomplete responses. It is written in R and C and available on CRAN.", "https://joss.theoj.org/papers/10.21105/joss.06181")
+			@projectCard("FRAMED", "assets/projects/framed.svg", "The FRAMED project aims to develop and assess a software-independent research data system, using a data warehouse model, for university outpatient clinics focused on child and adolescent psychotherapy.", "https://kiju.uni-wuppertal.de/en/research/projects/framed-project-secure-data-processing-and-flexible-use-of-diagnostic-information-in-research-and-therapy-practice/")
+			@projectCard("dropout", "assets/projects/dropout.png", "The dropout package offers tools for dropout analysis in survey data. It helps you identify and handle incomplete responses. It is written in R and C and available on CRAN.", "https://joss.theoj.org/papers/10.21105/joss.06181")
 		</div>
 		<nav class="pt-3 ml-10">
 			<a class="text-sm hover:underline" href="/projects/">Show all Projects</a>
