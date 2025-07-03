@@ -11,7 +11,7 @@ templ BlogCardTemplate(post blog.Post) {
 			<!-- Left: Image -->
 			<div class="w-20 h-20 overflow-hidden flex items-center justify-center">
 				<img
-					src={ fmt.Sprintf("%s", post.PreviewImage) }
+					src={ templ.SafeURL(post.Id) }
 					alt="Post logo"
 					class="w-full h-full object-contain"
 				/>
