@@ -124,7 +124,7 @@ func GenerateStaticWebsite() {
 
 	for _, page := range pages {
 
-		outputDir := filepath.Join("dist", page.Path)
+		outputDir := filepath.Join("docs", page.Path)
 		outputFile := filepath.Join(outputDir, "index.html")
 
 		err := os.MkdirAll(outputDir, 0755)
@@ -145,7 +145,7 @@ func GenerateStaticWebsite() {
 
 func GenerateStaticBlogPosts() {
 	for _, post := range blog.Posts {
-		outputDir := filepath.Join("dist/blog", post.Id)
+		outputDir := filepath.Join("docs/blog", post.Id)
 		outputFile := filepath.Join(outputDir, "index.html")
 
 		err := os.MkdirAll(outputDir, 0755)
@@ -164,7 +164,7 @@ func GenerateStaticBlogPosts() {
 }
 
 func CopyAssets() {
-	cmd := exec.Command("cp", "-r", "assets", "dist/")
+	cmd := exec.Command("cp", "-r", "assets", "docs/")
 	if err := cmd.Run(); err != nil {
 		log.Fatalf("copy failed: %v", err)
 	}
