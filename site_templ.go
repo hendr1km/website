@@ -751,7 +751,7 @@ func Thesis() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 45, "<h1 class=\"font-bold text-3xl pt-10\">Thesis Supplements</h1><h1 class=\"text-1xl mb-10 w-full md:max-w-2xl\">3D Ansichten zu den Response Surface Analysen jeweils mit posterior densitiy mean und 95% HDI Interverallen</h1>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 45, "<h1 class=\"font-bold text-3xl pt-10\">Thesis Supplements</h1><h1 class=\"text-1xl mb-10 w-full md:max-w-2xl\">3D-Ansichten der Response-Surface-Analysen mit posterioren Dichtemitteln und 95 %-HDI-Intervallen. Die Darstellung wird auf größeren Bildschirmen empfohlen.</h1>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
