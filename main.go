@@ -2,6 +2,7 @@ package main
 
 import (
 	"Site/assets/blog"
+	"Site/assets/thesis"
 	"context"
 	"fmt"
 	"io"
@@ -27,6 +28,21 @@ func RenderProjects(f io.Writer) {
 
 func RenderBlog(f io.Writer) {
 	err := Blog().Render(context.Background(), f)
+	if err != nil {
+		log.Fatalf("failed to write output file: %v", err)
+	}
+}
+
+func RenderThesisSupplements(f io.Writer) {
+	err := Thesis().Render(context.Background(), f)
+	if err != nil {
+		log.Fatalf("failed to write output file: %v", err)
+	}
+}
+
+func RenderThesisChart(chart thesis.Chart, f io.Writer) {
+	chart.Content = getHTMLPostContent(chart.HTMLContent)
+	err := ThesisChart(chart).Render(context.Background(), f)
 	if err != nil {
 		log.Fatalf("failed to write output file: %v", err)
 	}
@@ -60,6 +76,7 @@ func main() {
 	GenerateStaticWebsite()
 	CopyAssets()
 	GenerateStaticBlogPosts()
+	GenerateStaticThesisSupplements()
 }
 
 func GenerateStaticWebsite() {
@@ -72,6 +89,7 @@ func GenerateStaticWebsite() {
 		{"/publications/", RenderPublications},
 		{"/blog/", RenderBlog},
 		{"/projects/", RenderProjects},
+		{"/thesis/", RenderThesisSupplements},
 	}
 
 	for _, page := range pages {
@@ -119,5 +137,25 @@ func CopyAssets() {
 	cmd := exec.Command("cp", "-r", "assets", "docs/")
 	if err := cmd.Run(); err != nil {
 		log.Fatalf("copy failed: %v", err)
+	}
+}
+
+func GenerateStaticThesisSupplements() {
+	for _, chart := range thesis.Charts {
+		outputDir := filepath.Join("docs/thesis", chart.Id)
+		outputFile := filepath.Join(outputDir, "index.html")
+
+		err := os.MkdirAll(outputDir, 0755)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		f, err := os.Create(outputFile)
+		if err != nil {
+			log.Fatalf("failed to create output file: %v", err)
+		}
+		defer f.Close()
+
+		RenderThesisChart(chart, f)
 	}
 }

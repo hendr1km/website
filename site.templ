@@ -3,6 +3,7 @@ package main
 import (
 	"Site/assets/blog"
 	"Site/components"
+	"Site/assets/thesis"
 )
 
 templ About() {
@@ -216,4 +217,32 @@ templ footer() {
 		</div>
 		<div class="text-sm pt-5">Hendrik Mann 2025 </div>
 	</div>
+}
+
+templ Thesis() {
+	<!DOCTYPE html>
+	<html lang="en">
+		@head()
+		<body class="h-screen bg-black">
+			@page("Thesis Supplements") {
+				<h1 class="font-bold text-3xl pt-10">Thesis Supplements</h1>
+				<h1 class="text-1xl mb-10 w-full md:max-w-2xl">Hier finden sich die 3D Ansichten zu den Response Surface Analysen</h1>
+				for _, chart := range thesis.Charts {
+					@components.ThesisSuppsCardTemplate(chart)
+				}
+			}
+		</body>
+	</html>
+}
+
+templ ThesisChart(chart thesis.Chart) {
+	<!DOCTYPE html>
+	<html lang="en">
+		@head()
+		<body class="h-screen bg-black">
+			@page(chart.Header) {
+				@templ.Raw(chart.Content)
+			}
+		</body>
+	</html>
 }
